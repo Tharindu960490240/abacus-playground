@@ -1,0 +1,30 @@
+/* Variables used by customSnackbar.css and loadingSpinner.css */
+:root {
+  --card-color: #ffffff;
+  --text-color: #1a202c;
+  --border-color: rgba(15, 18, 56, 0.08);
+  --link-color: #282c7d;
+  --brand-navy: #282c7d;
+  --brand-red: #ed1f24;
+  --font-sans: "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+[data-theme="dark"] {
+  --card-color: #171b4a;
+  --text-color: #eef0ff;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --link-color: #9aa0ff;
+}
+
+@font-face {
+  font-family: "Digital7";
+  src: url("/assets/digital-7.ttf") format("truetype");
+  font-display: swap;
+}
+
+html, body { min-height: 100%; }
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
+.rich-text img { max-width: 100%; height: auto; border-radius: 12px; }
+.rich-text iframe { max-width: 100%; aspect-ratio: 16 / 9; width: 100%; height: auto; border: 0; border-radius: 12px; }
+.rich-text pre { overflow-x: auto; }

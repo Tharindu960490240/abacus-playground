@@ -1,0 +1,45 @@
+{
+  "name": "abacus-playground",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "seed:levels": "node scripts/seed-game-levels.mjs",
+    "make-admin": "node scripts/make-admin.mjs",
+    "migrate:uploads": "node scripts/migrate-uploads.mjs"
+  },
+  "dependencies": {
+    "@emotion/cache": "^11.14.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^9.6.0",
+    "@mui/material": "^9.6.0",
+    "@mui/material-nextjs": "^9.6.0",
+    "@vercel/blob": "^2.9.0",
+    "bcryptjs": "^3.0.3",
+    "docx": "^9.16.0",
+    "i18next": "^27.2.7",
+    "isomorphic-dompurify": "^4.8.0",
+    "jose": "^6.2.18",
+    "mongoose": "^9.13.1",
+    "next": "^16.4.6",
+    "quill": "^2.0.3",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-i18next": "^18.0.3",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.4.6",
+    "vitest": "^5.1.1"
+  }
+}
