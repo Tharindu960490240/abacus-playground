@@ -59,6 +59,9 @@ export default function ResultsDialog({ summary, onClose, onAgain }) {
           {s.bonus > 0 && <Chip color="secondary" label={`${s.bonus} bonus points`} />}
           {s.mode === "game" && <Chip variant="outlined" label={`${s.totalMarks} total marks`} />}
         </Box>
+        {s.mode === "practice" && (
+          <Alert severity="info" sx={{ mb: 2 }}>Practice marks are not saved. Play a level game (Anzan or Dictation) to get on the leaderboard.</Alert>
+        )}
         {Array.isArray(s.review) && s.review.length > 0 && (
           <Table size="small" aria-label="Your answers">
             <TableHead>

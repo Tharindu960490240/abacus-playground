@@ -42,7 +42,7 @@ function Board() {
 
   return (
     <>
-      <PageHeader title="Leaderboard" subtitle="Who has the most marks, and who has climbed the highest?" />
+      <PageHeader title="Leaderboard" subtitle="Marks from level games. Practice rounds are just for practice and are not counted." />
       <Stack direction={{ xs: "column", md: "row" }} spacing={2} sx={{ mb: 3 }}>
         <ToggleButtonGroup exclusive value={type} onChange={(_, v) => v && setType(v)} color="primary" aria-label="Game">
           <ToggleButton value="anzan">Anzan</ToggleButton>
@@ -99,6 +99,7 @@ function Board() {
                       <UserAvatar user={r} size={32} />
                       <span>{r.name}</span>
                       {r.me && <Chip size="small" color="primary" label="You" />}
+                      {r.teacher && <Chip size="small" variant="outlined" label="Teacher" />}
                     </Box>
                   </TableCell>
                   <TableCell align="right">{r.label}</TableCell>

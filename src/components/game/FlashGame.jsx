@@ -395,8 +395,11 @@ export default function FlashGame({ kind }) {
             )}
           </Grid>
         )}
+        <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
+          {mode === "game" ? "Your marks go on the leaderboard." : "Practice is not counted on the leaderboard. Switch to Level game to earn marks."}
+        </Typography>
         <Button
-          fullWidth size="large" variant="contained" sx={{ mt: 3 }} startIcon={<PlayArrowRounded />}
+          fullWidth size="large" variant="contained" sx={{ mt: 2 }} startIcon={<PlayArrowRounded />}
           onClick={start}
           disabled={(mode === "game" && !levelInfo?.configured) || (isDictation && !speechOk)}
         >

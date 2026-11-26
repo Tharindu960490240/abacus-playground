@@ -14,7 +14,8 @@
     "test": "vitest run",
     "seed:levels": "node scripts/seed-game-levels.mjs",
     "make-admin": "node scripts/make-admin.mjs",
-    "migrate:uploads": "node scripts/migrate-uploads.mjs"
+    "migrate:uploads": "node scripts/migrate-uploads.mjs",
+    "seed:demo": "node scripts/seed-demo.mjs"
   },
   "dependencies": {
     "@emotion/cache": "^11.14.0",
