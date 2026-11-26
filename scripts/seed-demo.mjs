@@ -16,7 +16,7 @@ import { randomBytes } from "node:crypto";
 import mongoose from "mongoose";
 import { connect } from "./connect.mjs";
 import bcrypt from "bcryptjs";
-import { put } from "@vercel/blob";
+import { putFile } from "./blob.mjs";
 import {
   User, GameScore, CourseLevel, Game, Paper, BasicEquation, PaperHistory, ForumPost, Blog, Chapter, Course,
   GameSession, LoginAttempt,
@@ -72,8 +72,7 @@ console.log(`Cleared ${existing.length} collections from "${db.databaseName}".`)
 // 2. demo worksheet PDF for the course (only if Blob storage is configured)
 let pdfUrl = null;
 if (process.env.BLOB_READ_WRITE_TOKEN) {
-  const blob = await put("course/demo-worksheet.pdf", demoWorksheetPdf(), { access: "public", contentType: "application/pdf", addRandomSuffix: true });
-  pdfUrl = blob.url;
+  pdfUrl = await putFile("course/demo-worksheet.pdf", demoWorksheetPdf(), "application/pdf");
 } else {
   console.log("BLOB_READ_WRITE_TOKEN not set: skipping worksheet (PDF) lessons.");
 }

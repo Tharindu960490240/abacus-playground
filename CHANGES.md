@@ -80,3 +80,9 @@ happened to it.
   - Tutorials: numbered covers.
   - Soroban: a larger wooden-style abacus.
 - **Small changes:** avatars get a colour of their own (always the same for each person), game numbers use bold Lexend instead of the LCD font, and the logo is drawn inline so it follows the theme.
+
+## File uploads
+
+- Works with **public and private** Vercel Blob stores (detected on the first upload, or set `BLOB_ACCESS`). With a private store, files are served by `/api/files/…`: profile photos and course PDFs need a login, tutorial images are visible to anyone.
+- On Vercel, uploads no longer need `BLOB_READ_WRITE_TOKEN` to be set; the Blob SDK signs in on its own.
+- A failed upload now shows the real reason (for example "Could not save the file: Access denied…") instead of "Something went wrong".

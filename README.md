@@ -43,7 +43,9 @@ npm run dev                    # http://localhost:3000
 
 1. Push this folder to a GitHub repo and import it at <https://vercel.com/new>. Vercel detects Next.js; no build settings needed.
 2. **Database:** Project → Storage / Marketplace → *MongoDB Atlas* (or paste your own `MONGODB_URI` into Settings → Environment Variables). In Atlas → Network Access, allow Vercel to connect (`0.0.0.0/0`, or Vercel's static IPs on paid plans).
-3. **Files:** Project → Storage → *Create Blob store* and connect it. This adds `BLOB_READ_WRITE_TOKEN`.
+3. **Files:** Project → Storage → *Create Blob store* and connect it. Either access type works:
+   - **Private** (recommended): files are served through the app at `/api/files/…`. Profile photos and course PDFs need a login; tutorial images are visible to anyone.
+   - **Public:** files are served straight from Vercel Blob links.
 4. **Secret:** add `AUTH_SECRET` (and optionally `APP_URL`) in Settings → Environment Variables for Production and Preview.
 5. Deploy. Tip: put the Vercel Functions region (Settings → Functions) close to your Atlas region.
 

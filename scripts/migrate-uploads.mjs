@@ -15,7 +15,7 @@ try {
 } catch {
   /* no .env.local: use the real environment */
 }
-import { put } from "@vercel/blob";
+import { putFile } from "./blob.mjs";
 
 const root = process.argv[2];
 if (!process.env.MONGODB_URI || !process.env.BLOB_READ_WRITE_TOKEN || !root) {
@@ -29,8 +29,7 @@ const TYPES = { ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png"
 async function upload(file, folder) {
   const buf = await fs.readFile(file);
   const ext = path.extname(file).toLowerCase();
-  const blob = await put(`${folder}/${path.basename(file)}`, buf, { access: "public", contentType: TYPES[ext] || "application/octet-stream", addRandomSuffix: true });
-  return blob.url;
+  return putFile(`${folder}/${path.basename(file)}`, buf, TYPES[ext] || "application/octet-stream");
 }
 const exists = (p) => fs.access(p).then(() => true, () => false);
 const stats = { avatars: 0, tutorials: 0, coursePdfs: 0, missing: 0 };
