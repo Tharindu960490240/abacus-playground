@@ -156,7 +156,7 @@ export default function TimedDrill({ kind }) {
           <Card sx={{ height: "100%" }}>
             <CardContent sx={{ p: 3, display: "flex", flexDirection: "column", gap: 2, height: "100%" }}>
               <Box sx={{ display: "flex", gap: 1, alignItems: "center", flexWrap: "wrap" }}>
-                <Chip color={left <= 10 && running ? "error" : "default"} label={`${Math.floor(left / 60)}:${String(left % 60).padStart(2, "0")}`} sx={{ fontFamily: "Digital7, monospace", fontSize: 20 }} />
+                <Chip color={left <= 10 && running ? "error" : "default"} label={`${Math.floor(left / 60)}:${String(left % 60).padStart(2, "0")}`} sx={{ fontWeight: 700, fontVariantNumeric: "tabular-nums", letterSpacing: "-0.02em", fontSize: 20 }} />
                 <Chip color="success" variant="outlined" label={`${live.correct} correct`} />
                 <Chip color="error" variant="outlined" label={`${live.wrong} wrong`} />
                 <Chip color="primary" label={`${live.marks} marks`} />
@@ -165,12 +165,12 @@ export default function TimedDrill({ kind }) {
               </Box>
               <LinearProgress variant="determinate" value={running ? (left / time) * 100 : 0} color={left <= 10 ? "error" : "primary"} />
               <Box sx={{
-                flex: 1, minHeight: 280, borderRadius: 4, display: "grid", placeItems: "center", border: 1, borderColor: "divider",
+                flex: 1, minHeight: 300, borderRadius: "24px", display: "grid", placeItems: "center", border: 1, borderColor: "divider",
                 bgcolor: flashState === "correct" ? "#e8f8ee" : flashState === "wrong" ? "#fdeaea" : "#fff", color: "#1a202c", transition: "background-color .2s",
               }}>
                 {question ? (
                   <Box component="form" onSubmit={(e) => { e.preventDefault(); submit(false); }} sx={{ textAlign: "center", width: "100%", maxWidth: 360, p: 2 }}>
-                    <Typography aria-live="polite" sx={{ fontFamily: "Digital7, monospace", fontSize: { xs: 52, sm: 72 }, color: "#282c7d", mb: 2 }}>{question.text}</Typography>
+                    <Typography aria-live="polite" sx={{ fontWeight: 700, fontVariantNumeric: "tabular-nums", letterSpacing: "-0.02em", fontSize: { xs: 52, sm: 72 }, color: "#282c7d", mb: 2 }}>{question.text}</Typography>
                     <TextField
                       inputRef={inputRef}
                       value={answer}

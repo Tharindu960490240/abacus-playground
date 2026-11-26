@@ -10,7 +10,6 @@ import Grid from "@mui/material/Grid";
 import Skeleton from "@mui/material/Skeleton";
 import Typography from "@mui/material/Typography";
 import PageHeader from "@/components/PageHeader";
-import FeatureIcon from "@/components/FeatureIcon";
 import { api } from "@/lib/client/api";
 import { useNotify } from "@/components/NotifyProvider";
 
@@ -31,8 +30,9 @@ export default function Tutorials() {
                 {t.imageUrl ? (
                   <CardMedia component="img" image={t.imageUrl} alt="" sx={{ height: 160, objectFit: "cover" }} />
                 ) : (
-                  <Box sx={{ height: 160, display: "grid", placeItems: "center", bgcolor: "action.hover" }}>
-                    <FeatureIcon name="soroban" size={72} />
+                  <Box sx={(th) => ({ height: 160, display: "flex", alignItems: "flex-end", p: 2.5, bgcolor: th.vars.palette.surface.low })}>
+                    {/* tutorials are a sequence, so the number is the cover */}
+                    <Typography aria-hidden="true" sx={{ fontSize: 88, lineHeight: 0.8, fontWeight: 700, letterSpacing: "-0.04em", color: "secondary.main", opacity: 0.9 }}>{t.blognumber}</Typography>
                   </Box>
                 )}
                 <CardContent sx={{ flex: 1 }}>

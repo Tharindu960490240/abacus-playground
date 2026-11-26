@@ -65,3 +65,18 @@ happened to it.
 - **LoadingSpinner:** `process.env.PUBLIC_URL` (Create React App) → icons load from `/assets/…`.
 - **PasswordStrength:** rules imported from `src/lib/shared/password.js` (same rules, same exports) so the server uses the exact same list; dark-mode colours use `theme.applyStyles`, because `palette.mode` does not change with CSS-variable themes.
 - **CustomSnackbar:** unchanged.
+
+## Design refresh ("beads and ink")
+
+- **Theme:** Material 3 style: AFC navy as the main colour, bead red for actions, a soroban-wood accent, cool paper backgrounds, a full dark mode, and the Lexend typeface with lined-up numbers. Corner rounding follows hierarchy (large panels 28px, cards 20px, small items 12px, pill-shaped buttons). Adds a "tonal" button style: `<Button variant="tonal">`.
+- **Navigation:** new top bar with pill-shaped links and a Teacher menu. On phones and tablets: a bottom navigation bar (Home, Play, Course, Ranks, More) and a "More" sheet for everything else. Adds a skip-to-content link.
+- **Bead progress:** a new `BeadProgress` component shows a student's level as beads on a rod. It appears on the home page and the play hub.
+- **Pages:**
+  - Home: a hero whose soroban slides its beads into place once on load (visitors), or a "welcome back" panel with bead progress (students).
+  - Login and register: two-panel layout.
+  - Play: tiles showing each game's progress.
+  - Leaderboard: a 2-1-3 podium and a phone-friendly table.
+  - Course: levels shown as a vertical path.
+  - Tutorials: numbered covers.
+  - Soroban: a larger wooden-style abacus.
+- **Small changes:** avatars get a colour of their own (always the same for each person), game numbers use bold Lexend instead of the LCD font, and the logo is drawn inline so it follows the theme.

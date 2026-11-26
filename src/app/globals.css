@@ -1,24 +1,18 @@
 /* Variables used by customSnackbar.css and loadingSpinner.css */
 :root {
   --card-color: #ffffff;
-  --text-color: #1a202c;
-  --border-color: rgba(15, 18, 56, 0.08);
+  --text-color: #171a3b;
+  --border-color: rgba(40, 44, 125, 0.1);
   --link-color: #282c7d;
   --brand-navy: #282c7d;
   --brand-red: #ed1f24;
-  --font-sans: "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --font-sans: "Lexend Variable", "Lexend", system-ui, sans-serif;
 }
 [data-theme="dark"] {
-  --card-color: #171b4a;
-  --text-color: #eef0ff;
+  --card-color: #151845;
+  --text-color: #e9eaff;
   --border-color: rgba(255, 255, 255, 0.1);
   --link-color: #9aa0ff;
-}
-
-@font-face {
-  font-family: "Digital7";
-  src: url("/assets/digital-7.ttf") format("truetype");
-  font-display: swap;
 }
 
 html, body { min-height: 100%; }
@@ -28,3 +22,14 @@ html, body { min-height: 100%; }
 .rich-text img { max-width: 100%; height: auto; border-radius: 12px; }
 .rich-text iframe { max-width: 100%; aspect-ratio: 16 / 9; width: 100%; height: auto; border: 0; border-radius: 12px; }
 .rich-text pre { overflow-x: auto; }
+
+/* skip link: visible only when focused with the keyboard */
+.skip-link {
+  position: absolute; left: 12px; top: -48px; z-index: 2000; padding: 10px 16px; border-radius: 999px;
+  background: var(--brand-navy); color: #fff; font-weight: 600; text-decoration: none; transition: top .15s;
+}
+.skip-link:focus { top: 12px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}

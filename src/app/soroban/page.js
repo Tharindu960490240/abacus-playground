@@ -30,8 +30,8 @@ export default function SorobanPage() {
             </Box>
             <Button onClick={() => { setValue(0); setTyped(""); }}>Clear</Button>
           </Stack>
-          <Box sx={{ display: "flex", justifyContent: "center", overflowX: "auto" }}>
-            <Soroban key={`${rods}-${value}`} value={value} digits={rods} size="large" interactive showValue onChange={() => {}} />
+          <Box sx={{ display: "flex", justifyContent: "center", bgcolor: "#FBF6EE", color: "#2b1a0c", borderRadius: "24px", p: { xs: 1.5, sm: 3 }, overflowX: "auto" }}>
+            <Soroban key={`${rods}-${value}`} value={value} digits={rods} size="xlarge" interactive showValue onChange={() => {}} />
           </Box>
           <Typography color="text.secondary" variant="body2" sx={{ mt: 3, textAlign: "center" }}>
             Each upper bead is worth 5 and each lower bead 1 when pushed to the bar. Dots on the bar mark the units rods.

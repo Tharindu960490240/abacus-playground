@@ -429,8 +429,8 @@ export default function FlashGame({ kind }) {
         <Box
           aria-live="polite"
           sx={{
-            flex: 1, minHeight: { xs: 240, md: 320 }, borderRadius: 4, display: "grid", placeItems: "center",
-            bgcolor: "#fff", color: "#1a202c", border: 1, borderColor: "divider", position: "relative", overflow: "hidden",
+            flex: 1, minHeight: { xs: 260, md: 340 }, borderRadius: "24px", display: "grid", placeItems: "center",
+            bgcolor: "#FCFCFF", color: "#171a3b", border: 1, borderColor: "divider", position: "relative", overflow: "hidden",
           }}
         >
           {phase === "setup" && (
@@ -454,7 +454,7 @@ export default function FlashGame({ kind }) {
                 <Soroban value={flash.value} digits={Math.max(3, String(flash.value).length)} size="large" />
               </Stack>
             ) : (
-              <Typography sx={{ fontFamily: "Digital7, monospace", fontSize: flash.muted ? 48 : { xs: 72, sm: 110, md: 140 }, color: flash.colour, lineHeight: 1, px: 2, textAlign: "center", wordBreak: "break-all" }}>
+              <Typography sx={{ fontWeight: 700, fontVariantNumeric: "tabular-nums", letterSpacing: "-0.02em", fontSize: flash.muted ? 48 : { xs: 72, sm: 110, md: 140 }, color: flash.colour, lineHeight: 1, px: 2, textAlign: "center", wordBreak: "break-all" }}>
                 {flash.text}
               </Typography>
             )
@@ -479,7 +479,7 @@ export default function FlashGame({ kind }) {
                     value={answer}
                     onChange={(e) => setAnswer(e.target.value.replace(/[^\d.,\s]/g, ""))}
                     autoComplete="off"
-                    slotProps={{ htmlInput: { inputMode: "decimal", "aria-label": "Your answer", style: { fontSize: 40, textAlign: "center", fontFamily: "Digital7, monospace", color: "#1a202c" } } }}
+                    slotProps={{ htmlInput: { inputMode: "decimal", "aria-label": "Your answer", style: { fontSize: 40, textAlign: "center", fontWeight: 700, fontVariantNumeric: "tabular-nums", letterSpacing: "-0.02em", color: "#1a202c" } } }}
                     sx={{ "& .MuiOutlinedInput-root": { bgcolor: "#fff" } }}
                   />
                   <Stack direction="row" spacing={1} sx={{ mt: 2 }}>

@@ -3,28 +3,31 @@ import {
   BoltRounded, RecordVoiceOverRounded, CloseRounded, LinkRounded, CalculateRounded, DescriptionRounded,
 } from "@mui/icons-material";
 
-const MAP = {
-  anzan: { Icon: BoltRounded, color: "#282c7d" },
-  dictation: { Icon: RecordVoiceOverRounded, color: "#7c3aed" },
-  tables: { Icon: CloseRounded, color: "#16a34a" },
-  bonds: { Icon: LinkRounded, color: "#ea580c" },
-  soroban: { Icon: CalculateRounded, color: "#0e7490" },
-  papers: { Icon: DescriptionRounded, color: "#ed1f24" },
+// One colour family per game, so each is recognisable at a glance.
+export const FEATURE_COLOURS = {
+  anzan: { fg: "#282c7d", bg: "#E3E5FF", dfg: "#D6D9FF", dbg: "#2B3070" },
+  dictation: { fg: "#6B2BB5", bg: "#F0E5FF", dfg: "#E2CCFF", dbg: "#3F2368" },
+  tables: { fg: "#146C43", bg: "#DDF5E7", dfg: "#B6EBCD", dbg: "#1C4A35" },
+  bonds: { fg: "#A2440B", bg: "#FFE9D6", dfg: "#FFD2AE", dbg: "#5A3216" },
+  soroban: { fg: "#8A5A2B", bg: "#F6E9DA", dfg: "#F0D2B2", dbg: "#4D3520" },
+  papers: { fg: "#B4161C", bg: "#FFE1E2", dfg: "#FFC2C4", dbg: "#5C1D22" },
 };
+const ICONS = { anzan: BoltRounded, dictation: RecordVoiceOverRounded, tables: CloseRounded, bonds: LinkRounded, soroban: CalculateRounded, papers: DescriptionRounded };
 
-/** Round coloured icon used on the home page, the play hub and the game boards. */
-export default function FeatureIcon({ name, size = 64 }) {
-  const { Icon, color } = MAP[name] || MAP.anzan;
+/** Rounded tonal tile with the game's icon. */
+export default function FeatureIcon({ name, size = 56 }) {
+  const Icon = ICONS[name] || BoltRounded;
+  const c = FEATURE_COLOURS[name] || FEATURE_COLOURS.anzan;
   return (
     <Box
       aria-hidden="true"
       sx={(t) => ({
-        width: size, height: size, flex: "none", borderRadius: "30%", display: "grid", placeItems: "center",
-        color, bgcolor: `${color}1a`,
-        ...t.applyStyles("dark", { color: "#fff", bgcolor: `${color}cc` }),
+        width: size, height: size, flex: "none", borderRadius: `${Math.round(size * 0.32)}px`, display: "grid", placeItems: "center",
+        color: c.fg, bgcolor: c.bg,
+        ...t.applyStyles("dark", { color: c.dfg, bgcolor: c.dbg }),
       })}
     >
-      <Icon sx={{ fontSize: size * 0.55 }} />
+      <Icon sx={{ fontSize: size * 0.52 }} />
     </Box>
   );
 }

@@ -4,18 +4,16 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import Stack from "@mui/material/Stack";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Stepper from "@mui/material/Stepper";
 import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert";
 import { useAuth } from "@/components/AuthProvider";
 import { useNotify } from "@/components/NotifyProvider";
 import PasswordField from "@/components/PasswordField";
+import AuthLayout from "@/components/AuthLayout";
 import PasswordStrength, { isStrongPassword } from "@/components/PasswordStrength";
 import ProfileFields, { emptyProfile, cleanProfile } from "@/components/ProfileFields";
 
@@ -51,16 +49,12 @@ export default function RegisterPage() {
   };
 
   return (
-    <Box sx={{ maxWidth: 760, mx: "auto" }}>
-      <Typography variant="h4" component="h1" sx={{ mb: 1 }}>Create an account</Typography>
-      <Typography color="text.secondary" sx={{ mb: 3 }}>
-        Already registered? <Link href="/login">Log in</Link>
-      </Typography>
-      <Stepper activeStep={step} sx={{ mb: 3 }} alternativeLabel>
-        {STEPS.map((s) => <Step key={s}><StepLabel>{s}</StepLabel></Step>)}
-      </Stepper>
-      <Card>
-        <CardContent component="form" onSubmit={next} noValidate sx={{ p: { xs: 3, sm: 4 } }}>
+    <Box sx={{ maxWidth: 1100, mx: "auto" }}>
+      <AuthLayout wide title="Create an account" subtitle={<>Already registered? <Link href="/login">Log in</Link></>}>
+        <Stepper activeStep={step} sx={{ mb: 3 }} alternativeLabel>
+          {STEPS.map((s) => <Step key={s}><StepLabel>{s}</StepLabel></Step>)}
+        </Stepper>
+        <Box component="form" onSubmit={next} noValidate>
           <Stack spacing={2.5}>
             {error && <Alert severity="error">{error}</Alert>}
             {step === 0 && (
@@ -78,8 +72,8 @@ export default function RegisterPage() {
               <Button type="submit" variant="contained" size="large" disabled={!canNext}>{step < 2 ? "Next" : "Create account"}</Button>
             </Stack>
           </Stack>
-        </CardContent>
-      </Card>
+        </Box>
+      </AuthLayout>
     </Box>
   );
 }

@@ -125,7 +125,7 @@ function Builder() {
             <Card>
               <CardContent>
                 <Stack spacing={2}>
-                  <TextField select label="Saved paper levels" value={selected} onChange={(e) => pick(e.target.value)}>
+                  <TextField select label="Saved paper levels" value={selected} onChange={(e) => pick(e.target.value)} slotProps={{ select: { displayEmpty: true }, inputLabel: { shrink: true } }}>
                     <MenuItem value="">＋ New paper level</MenuItem>
                     {templates.map((t) => <MenuItem key={t._id} value={t._id}>{t.name} {t.level != null ? `(level ${t.level})` : "(no level!)"}</MenuItem>)}
                   </TextField>

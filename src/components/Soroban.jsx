@@ -12,6 +12,7 @@ const SIZES = {
   small: { rod: 30, bead: 24, beadH: 14, gap: 3 },
   medium: { rod: 40, bead: 32, beadH: 18, gap: 4 },
   large: { rod: 52, bead: 44, beadH: 24, gap: 5 },
+  xlarge: { rod: 64, bead: 54, beadH: 28, gap: 6 },
 };
 
 function toDigits(value, rods) {
@@ -62,8 +63,8 @@ export default function Soroban({ value = 0, digits = 7, size = "medium", intera
       height={g.beadH}
       rx={g.beadH / 2}
       onClick={onClick}
-      style={{ cursor: interactive ? "pointer" : "default", transition: "y .15s ease" }}
-      fill={active ? (accent ? "var(--brand-red)" : "var(--soroban-bead, #282c7d)") : "var(--soroban-bead-off, #c9cde3)"}
+      style={{ cursor: interactive ? "pointer" : "default", transition: "y .35s cubic-bezier(.2,.8,.2,1)" }}
+      fill={active ? (accent ? "var(--brand-red)" : "var(--soroban-bead, #282c7d)") : "var(--soroban-bead-off, #DCC7A8)"}
       stroke="rgba(0,0,0,.15)"
     />
   );
@@ -119,7 +120,7 @@ export default function Soroban({ value = 0, digits = 7, size = "medium", intera
         {rods.map((_, i) => ((rods.length - 1 - i) % 3 === 0 ? <circle key={`u${i}`} cx={frame + g.rod * i + g.rod / 2} cy={beamY + beam / 2} r="2.2" fill="#fff" /> : null))}
       </svg>
       {showValue && (
-        <Typography sx={{ fontFamily: "Digital7, monospace", fontSize: size === "large" ? 34 : 26, letterSpacing: 2 }} aria-live="polite">
+        <Typography sx={{ fontWeight: 700, fontSize: size === "xlarge" ? 36 : size === "large" ? 30 : 24, letterSpacing: "0.02em", fontVariantNumeric: "tabular-nums", color: "inherit" }} aria-live="polite">
           {total.toLocaleString()}
         </Typography>
       )}

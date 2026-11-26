@@ -62,7 +62,7 @@ function Students() {
       <PageHeader title="Students" subtitle={`${rows.length} students`} />
       <Stack direction={{ xs: "column", sm: "row" }} spacing={2} sx={{ mb: 2 }}>
         <TextField placeholder="Search by name or email" value={q} onChange={(e) => { setQ(e.target.value); setPage(0); }} slotProps={{ input: { startAdornment: <InputAdornment position="start"><SearchRounded /></InputAdornment> } }} />
-        <TextField select label="Group" value={group} onChange={(e) => { setGroup(e.target.value); setPage(0); }} sx={{ maxWidth: { sm: 200 } }}>
+        <TextField select label="Group" value={group} onChange={(e) => { setGroup(e.target.value); setPage(0); }} slotProps={{ select: { displayEmpty: true }, inputLabel: { shrink: true } }} sx={{ maxWidth: { sm: 200 } }}>
           <MenuItem value="">All groups</MenuItem>
           {GROUPS.map((g) => <MenuItem key={g} value={g}>{g}</MenuItem>)}
         </TextField>
