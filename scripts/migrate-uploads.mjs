@@ -8,6 +8,13 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import mongoose from "mongoose";
+import { connect } from "./connect.mjs";
+
+try {
+  process.loadEnvFile(".env.local");
+} catch {
+  /* no .env.local: use the real environment */
+}
 import { put } from "@vercel/blob";
 
 const root = process.argv[2];
@@ -15,7 +22,7 @@ if (!process.env.MONGODB_URI || !process.env.BLOB_READ_WRITE_TOKEN || !root) {
   console.error("Usage: MONGODB_URI=... BLOB_READ_WRITE_TOKEN=... node scripts/migrate-uploads.mjs <old backend folder>");
   process.exit(1);
 }
-await mongoose.connect(process.env.MONGODB_URI);
+await connect();
 const db = mongoose.connection;
 const TYPES = { ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png", ".pdf": "application/pdf" };
 

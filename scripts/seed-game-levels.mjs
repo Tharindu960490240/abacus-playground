@@ -3,13 +3,20 @@
 //   MONGODB_URI=... node scripts/seed-game-levels.mjs --force    (overwrites existing levels)
 //   --pass=60   pass mark as % of the maximum score (default 60)
 import mongoose from "mongoose";
+import { connect } from "./connect.mjs";
+
+try {
+  process.loadEnvFile(".env.local");
+} catch {
+  /* no .env.local: use the real environment */
+}
 import { ANZAN, DICTATION, toGameDoc } from "./game-levels-spec.mjs";
 
 const force = process.argv.includes("--force");
 const pass = Number((process.argv.find((a) => a.startsWith("--pass=")) || "--pass=60").split("=")[1]);
 if (!process.env.MONGODB_URI) { console.error("Set MONGODB_URI first"); process.exit(1); }
 
-await mongoose.connect(process.env.MONGODB_URI);
+await connect();
 const games = mongoose.connection.collection("games");
 let added = 0, skipped = 0, updated = 0;
 for (const [type, rows] of [["anzan", ANZAN], ["dictation", DICTATION]]) {

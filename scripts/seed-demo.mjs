@@ -14,6 +14,7 @@
 //   DEMO_STUDENT_PASSWORD   shared password for the 24 demo students (generated if not set)
 import { randomBytes } from "node:crypto";
 import mongoose from "mongoose";
+import { connect } from "./connect.mjs";
 import bcrypt from "bcryptjs";
 import { put } from "@vercel/blob";
 import {
@@ -47,7 +48,7 @@ for (const [label, pw] of [["ADMIN_PASSWORD", adminPassword], ["DEMO_STUDENT_PAS
   }
 }
 
-await mongoose.connect(process.env.MONGODB_URI, { serverSelectionTimeoutMS: 15000 });
+await connect();
 const db = mongoose.connection.db;
 const host = mongoose.connection.host;
 
